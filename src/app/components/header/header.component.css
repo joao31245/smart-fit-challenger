@@ -6,6 +6,7 @@ header {
     width: 100%;
     min-width: 100vw;
     gap: 6em;
+    margin-bottom: 5em;
 }
 
 header .logo-container {
