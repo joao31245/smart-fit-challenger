@@ -1,4 +1,4 @@
-<form action="">
+<form class="form-group" [formGroup]="formGroup">
     <div class="form-container">
         <div class="form-icon"><img src="/assets/images/png/icon-hour.png" alt="Icone de reologio">
         Horário
@@ -7,34 +7,35 @@
 
         <div class="radio-container">    
             <div class="radio-item">
-                <input type="radio" name="periodo" id="Manhã">
+                <input type="radio" name="periodo" value="Manhã" formControlName="periodo">
                 <label for="Manhã">Manhã</label>
                 <span>06:00 ás 12:00</span>
             </div>
         </div>
         <div class="radio-container">    
             <div class="radio-item">
-                <input type="radio" name="periodo" id="Tarde">
+                <input type="radio" name="periodo" value="Tarde" formControlName="periodo">
                 <label for="Tarde">Tarde</label>
                 <span>12:01 ás 18:00</span>
             </div>
         </div>
         <div class="radio-container">    
             <div class="radio-item">
-                <input type="radio" name="periodo" id="Noite">
+                <input type="radio" name="periodo" value="Noite" formControlName="periodo">
                 <label for="Noite">Noite</label>
                 <span>18:01 ás 23:00</span>
             </div>
         </div>
+        
         <div class="unidades-container">
-            <input type="checkbox" name="unidades-fechadas" id="">
-            <label for="unidades-fechadas">Exibir unidades fechadas</label>
-            <p>Resultados encontrados: <span>0</span></p>
+            <input type="checkbox" name="unidadesFechadas" id="" formControlName="unidadesFechadas">
+            <label for="unidadesFechadas">Exibir unidades fechadas</label>
+            <p>Resultados encontrados: <span>{{results.length}}</span></p>
         </div>
 
         <div class="botoes-container">
-            <button class="submit">ECONTRAR UNIDADE</button>
-            <button class="reset">LIMPAR</button>
+            <button class="submit" (click)="onSubmit()">ECONTRAR UNIDADE</button>
+            <button class="reset" (click)="onClear()">LIMPAR</button>
         </div>
     </div>
 </form>

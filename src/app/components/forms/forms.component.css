@@ -5,6 +5,7 @@ form {
     width: 100%;
     min-width: 100vw;
     color: var(--dark-grey);
+    margin-bottom: 1em;
 }
 
 .form-container .form-icon {
@@ -63,7 +64,6 @@ form {
     width: 2em;
     height: 1.3em;
     border: 1px solid var(--dark-grey);
-    
 }
 .unidades-container label {
     align-items: center;
@@ -103,3 +103,34 @@ form {
 .botoes-container .reset {
     background-color: white
 }
+
+@media screen and (max-width: 604px) {
+    .unidades-container {
+        margin-top: 1.8em;
+        display: inline-block;
+        align-items: baseline;
+    }
+   
+    .unidades-container p {
+        margin-top: 1.3em;
+        margin-left: 0.5em;
+        position: initial;
+    }
+    .botoes-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1em;
+    }
+    .botoes-container button {
+        align-items: center;
+        border: 1px solid #DDD;
+        width: 100%;
+        margin-left: 0;
+        padding: 12px 15px;
+        font-weight: bold;
+    }
+    .botoes-container .submit {
+        margin-bottom: 1em;
+    }
+}
+    
