@@ -5,7 +5,6 @@ form {
     width: 100%;
     min-width: 100vw;
     color: var(--dark-grey);
-    margin-bottom: 1em;
 }
 
 .form-container .form-icon {
