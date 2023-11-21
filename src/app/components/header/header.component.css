@@ -3,7 +3,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 110%;
     min-width: 100vw;
     gap: 6em;
 }
@@ -15,7 +15,6 @@ header .logo-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 header .logo-container img {
