@@ -1,0 +1,19 @@
+ul {
+    display: flex;
+
+    flex-wrap: wrap;
+    width: 80%;
+
+    justify-content: center;   
+    align-items: center;
+
+    list-style: none;    
+   
+    margin-left: 10%;
+    margin-right: 10%;
+
+     gap: 8px;
+}
+li {
+    list-style: none;
+}
