@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetUnidadesService } from 'src/app/services/get-unidades.service';
 import { Location } from '../types/location-interface';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-forms',
@@ -9,39 +10,41 @@ import { Location } from '../types/location-interface';
   styleUrls: ['./forms.component.css']
 })
 
-const 
-export class FormsComponent implements OnInit{
+
+export class FormsComponent implements OnInit {
+  @Output() submitEvent = new EventEmitter();
+    
   results: Location[] = [];
-  filtredResults : Location[] = [];
+  filtredResults: Location[] = [];
   formGroup!: FormGroup;
 
-  constructor(public formBuilder : FormBuilder,public unidadesService : GetUnidadesService) {
+  constructor(public formBuilder: FormBuilder, public unidadesService: GetUnidadesService, public filterService : FilterService) {
 
   }
 
   ngOnInit(): void {
-    this.unidadesService.getAllUnidades().subscribe(
-      data => {
-        this.results = data.locations;
-        this.filtredResults = data.locations
-      }
-    );
     this.formGroup = this.formBuilder.group({
-      periodo : '',
-      unidadesFechadas : true
-    }) 
+      periodo: '',
+      unidadesFechadas: true
+    })
   }
 
-    onSubmit() {
-      if(!this.formGroup.value.unidadesFechadas) {
-        this.filtredResults = this.results.filter(location => location.opened);
-      } else {
-        this.filtredResults = this.results;
+  onSubmit() {
+    this.unidadesService.getTodasUnidades().subscribe(
+      data => {
+        this.results = data;
+        this.filtredResults = data;
       }
+    );
+   this.filtredResults = this.filterService.filtrar(this.results, this.formGroup.value.unidadesFechadas, this.formGroup.value.periodo);
+   this.unidadesService.setUnidadesFiltradas(this.filtredResults);
 
-    }
+   this.submitEvent.emit();
+  }
 
-    onClear() {
-      this.formGroup.reset();
-    }
+  onClear() {
+    this.formGroup.reset();
+    this.filtredResults = [];
+    this.results = [];
+  }
 }
