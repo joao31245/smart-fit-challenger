@@ -1,4 +1,6 @@
 <div class="app-container">
     <app-header></app-header>
-    <app-forms></app-forms>
+    <app-forms (submitEvent)="onSubmit()"></app-forms>
+    <app-legend></app-legend>
+    <app-card-list *ngIf="(mostrarLista | async)" [unidadesFiltradas]="lista"></app-card-list>
 </div>
